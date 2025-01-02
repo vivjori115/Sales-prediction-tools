@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Predict Sales</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            border: 2px solid #ccc;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            border: 2px solid #ccc; /* Added border */
+        }
+
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            color: #333;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        #result {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            form {
+                max-width: 90%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Predict Sales</h1>
+
+    <!-- Form for user input -->
+    <form method="POST" action="/predict">
+        <div>
+            <label for="TV">TV Advertising Budget:</label>
+            <input type="text" id="TV" name="TV" required>
+        </div>
+
+        <div>
+            <label for="Radio">Radio Advertising Budget:</label>
+            <input type="text" id="Radio" name="Radio" required>
+        </div>
+
+        <div>
+            <label for="Newspaper">Newspaper Advertising Budget:</label>
+            <input type="text" id="Newspaper" name="Newspaper" required>
+        </div>
+
+        <button type="submit">Predict</button>
+    </form>
+
+    <!-- Display result -->
+    <div id="result">
+        {% if result %}
+            <h2>Prediction Result: {{ result }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
